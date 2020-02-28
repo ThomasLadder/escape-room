@@ -4,10 +4,10 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(inContainer Key1 Box1)
+(inContainer K1 Box1)
 (onTable Hammer1)
 (onTable Box1)
 
-(isa Key1 keyOfLock)
+(isa K1 keyOfLock)
 (isa Hammer1 PoundingDrivingImplement)
 (isa Box1 Container)

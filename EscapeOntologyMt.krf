@@ -8,16 +8,16 @@
 ;;;Ontology
 
 (isa escape ComplexActionPredicate)
-(arity escape 1)
+(arity escape 2)
 
 (isa escapeFail ComplexActionPredicate)
 (arity escapeFail 1)
 
 (isa fetch ComplexActionPredicate)
-(arity fetch 1)
+(arity fetch 2)
 
 (isa breakContainer ComplexActionPredicate)
-(arity breakContainer 2)
+(arity breakContainer 3)
 
 (isa onTable Predicate)
 (arity onTable 1)
@@ -26,14 +26,16 @@
 (arity inContainer 2)
 
 (isa accessible Predicate)
-(arity accessible 1)
+(arity accessible 2)
 
 (isa notAccessible Predicate)
-(arity notAccessible 1)
+(arity notAccessible 2)
 
-(<== (accessible ?obj)
-	(onTable ?obj))
 
-(<== (notAccessible ?obj)
-	(uninferredSentence(accessible ?obj))
+;;;added the namespace wrapper
+(<== (accessible ?obj ?mt)
+	(ist-Information ?mt (onTable ?obj)))
+
+(<== (notAccessible ?obj ?mt)
+	(uninferredSentence(accessible ?obj ?mt))
 )

@@ -3,57 +3,63 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
+;;;FETCH-Accessible
 (preconditionForMethod
       (and
-	(accessible ?obj)
+	(accessible ?obj ?mt)
 	(isa ?obj keyOfLock))    
  (methodForAction
-  (fetch ?obj)
+  (fetch ?obj ?mt)
   (actionSequence
    (TheList
     (doAgentPlan
-     (escape ?obj))
-    ))))
+     (escape ?obj ?mt))
+))))
 
+;;;;FETCH-NotAccessible
 (preconditionForMethod
       (and
-	(notAccessible ?obj)
+	(notAccessible ?obj ?mt)
 	(isa ?obj keyOfLock)
-	(inContainer ?obj ?container))            
+	(ist-Information ?mt (inContainer ?obj ?container)))            
  (methodForAction
-  (fetch ?obj)
+  (fetch ?obj ?mt)
   (actionSequence
    (TheList
     (doAgentPlan
-     (breakContainer ?container ?poundTool))
-    ))))
+     (breakContainer ?container ?poundTool ?mt))
+))))
 
+;;;BREAK CONTAINER
 (preconditionForMethod
       (and
-	(isa ?container Container)
-	(isa ?poundTool PoundingDrivingImplement)
-	(accessible ?container)
-	(accessible ?poundTool)
-	(inContainer ?obj ?container))            
+	(ist-Information ?mt (isa ?container Container))
+	(ist-Information ?mt (isa ?poundTool PoundingDrivingImplement))
+  (ist-Information ?mt (inContainer ?obj ?container))
+	(accessible ?container ?mt)
+	(accessible ?poundTool ?mt)
+ )            
  (methodForAction
-     (breakContainer ?container ?poundTool)
+     (breakContainer ?container ?poundTool ?mt)
   (actionSequence
    (TheList
 	(doRecord (ist-Information MyEscapePlanMt (breakContainer ?container ?poundTool)))
-	(doRecord (ist-Information LevelTwoMt (onTable ?obj)))   
+  
+  ;;;update the state of the world 
+	(doRecord (ist-Information ?mt (onTable ?obj)))   
    (doAgentPlan
-     (fetch ?obj))
-    ))))
+     (fetch ?obj ?mt))
+))))
 
 
+;;;ESCAPE = win!
 (preconditionForMethod
       (and (true))            
- (methodForAction
-     (escape ?obj)
+(methodForAction
+  (escape ?obj ?mt)
   (actionSequence
    (TheList
-    (doRecord (ist-Information MyEscapePlanMt (escape ?obj)))
-    ))))
+    (doRecord (ist-Information MyEscapePlanMt (escape ?obj ?mt)))
+))))
 
-;;;test 
-;;;; test branch merge
