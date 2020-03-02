@@ -7,3 +7,8 @@
 
 (onTable K1)
 (isa K1 keyOfLock)
+
+
+;;; to test "clear"
+(isa B1 box)
+(onTop B1 K1)
