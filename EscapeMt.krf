@@ -29,7 +29,26 @@
    (TheList
     (doAgentPlan
      (breakContainer ?container ?poundTool ?mt))
+         (doAgentPlan
+     (fetch ?obj ?mt))
 ))))
+
+
+;;;;FETCH-NotAccessible--TESTINGCLEARING
+(preconditionForMethod
+      (and
+  (notAccessible ?obj ?mt)
+  (unclearTop ?obj ?mt))            
+ (methodForAction
+  (fetch ?obj ?mt)
+  (actionSequence
+   (TheList
+    (doAgentPlan
+     (removeFromTop ?obj ?mt))
+         (doAgentPlan
+     (fetch ?obj ?mt))
+))))
+
 
 ;;;BREAK CONTAINER
 (preconditionForMethod
@@ -47,10 +66,28 @@
 	   (doRecord (ist-Information MyEscapePlanMt (breakContainer ?container ?poundTool)))
     ;;;update the state of the world 
 	  (doRecord (ist-Information ?mt (onTable ?obj)))   
-    (doAgentPlan
-     (fetch ?obj ?mt))
+
 ))))
 
+;;;REMOVEFROMTOP 
+
+(preconditionForMethod
+  (ist-Information ?mt (onTop ?objToRemove ?objUnderneath))
+      
+  (methodForAction
+  (removeFromTop ?objUnderneath ?mt)
+  (actionSequence
+   (TheList
+    (doAgentPlan
+      ;;; the object will now be on the table
+      
+      (doRecord (ist-Information ?mt (onTable ?objToRemove ?mt)))
+      (doForget (ist-Information ?mt (onTop ?objToRemove ?objUnderneath)))
+      
+      ;;;record plan
+      (doRecord (ist-Information MyEscapePlanMt (removeFromTop ?objToRemove ?mt)))
+      )
+))))
 
 
 ;;;ESCAPE = win!

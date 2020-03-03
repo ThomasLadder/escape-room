@@ -48,15 +48,16 @@
 ;;;added the namespace wrapper
 (<== (accessible ?obj ?mt)
 	(ist-Information ?mt (onTable ?obj))
-		(clearTop ?obj ?mt)
+	(clearTop ?obj ?mt)
 )
+
 (<== (notAccessible ?obj ?mt)
 	(uninferredSentence(accessible ?obj ?mt))
 )
 
 
 (<== (clearTop ?obj ?mt)
-	(uninferredSentence (unclearTop ?obj ?mt))
+	 (uninferredSentence (unclearTop ?obj ?mt))
 )
 
 (<== (unclearTop ?obj ?mt)
