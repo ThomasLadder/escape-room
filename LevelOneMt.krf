@@ -7,3 +7,5 @@
 
 (onTable K1)
 (isa K1 keyOfLock)
+(onTop B1 B1)
+(isa B1 Block)

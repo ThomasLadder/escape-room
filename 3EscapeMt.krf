@@ -29,6 +29,8 @@
    (TheList
     (doAgentPlan
      (breakContainer ?container ?poundTool ?mt))
+   (doAgentPlan
+     (fetch ?obj ?mt))
 ))))
 
 ;;;BREAK CONTAINER
@@ -48,8 +50,7 @@
   
   ;;;update the state of the world 
 	(doRecord (ist-Information ?mt (onTable ?obj)))   
-   (doAgentPlan
-     (fetch ?obj ?mt))
+
 ))))
 
 

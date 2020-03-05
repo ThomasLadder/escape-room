@@ -22,6 +22,15 @@
 (isa onTable Predicate)
 (arity onTable 1)
 
+(isa clearTop Predicate)
+(arity clearTop 2)
+
+(isa unclearTop Predicate)
+(arity unclearTop 2)
+
+(isa onTop Predicate)
+(arity onTop 2)
+
 (isa inContainer Predicate)
 (arity inContainer 2)
 
@@ -34,8 +43,17 @@
 
 ;;;added the namespace wrapper
 (<== (accessible ?obj ?mt)
-	(ist-Information ?mt (onTable ?obj)))
+	(ist-Information ?mt (onTable ?obj))
+	(clearTop ?obj ?mt))
 
 (<== (notAccessible ?obj ?mt)
 	(uninferredSentence(accessible ?obj ?mt))
+)
+
+(<== (unclearTop ?obj ?mt)
+	(ist-Information ?mt (onTop ?obj2 ?obj))
+)
+
+(<== (clearTop ?obj ?mt)
+	(uninferredSentence(unclearTop ?obj ?mt))
 )
