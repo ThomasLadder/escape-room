@@ -1,13 +1,20 @@
 
-(in-microtheory LevelTwoMt)
-(genlMt EscapeMt LevelTwoMt)
+(in-microtheory LevelFourMt)
+(genlMt EscapeMt LevelFourMt)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(inContainer K1 Jar1)
-(onTable Hammer1)
-(onTable Jar1)
 
+
+(inContainer K1 Jar1)
+(onTable Jar1)
+(onTable Hammer1)
+(onTop Box1 Hammer1)
+(onTop Box2 Box1)
+
+(isa Box1 box)
+(isa Box2 box)
 (isa K1 keyOfLock)
 (isa Hammer1 PoundingDrivingImplement)
 (isa Jar1 Container)
+

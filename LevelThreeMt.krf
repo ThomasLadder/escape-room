@@ -8,10 +8,10 @@
 (onTable K1)
 (isa K1 keyOfLock)
 
-(isa B1 box)
-(isa B2 box)
-(isa B3 box)
+(onTop Box1 K1)
+(onTop Box2 Box1)
+(onTop Box3 Box2)
 
-(onTop B1 K1)
-(onTop B2 B1)
-(onTop B3 B2)
+(isa Box1 box)
+(isa Box2 box)
+(isa Box3 box)

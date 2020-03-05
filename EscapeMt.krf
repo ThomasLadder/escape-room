@@ -91,7 +91,8 @@
   (methodForAction (fetch ?obj ?mt)
     (actionSequence
       (TheList
-        (doRecord (ist-Information MyEscapePlanMt (Fetching was unsuccessful because ?obj is in ?container in ?mt)))
+        (doRecord (ist-Information MyEscapePlanMt 
+        	(Fetching was unsuccessful because ?obj is in ?container in ?mt)))
         (doAgentPlan (breakContainer ?container ?poundTool ?mt))
         (doAgentPlan (fetch ?obj ?mt))     
       )
@@ -107,8 +108,8 @@
     (ist-Information ?mt (isa ?container Container))
     (ist-Information ?mt (isa ?poundTool PoundingDrivingImplement))
     (ist-Information ?mt (inContainer ?obj ?container))
-	  (accessible ?container ?mt)
-	  (accessible ?poundTool ?mt)
+	(accessible ?container ?mt)
+	(accessible ?poundTool ?mt)
  )            
  (methodForAction (breakContainer ?container ?poundTool ?mt)
     (actionSequence
@@ -117,6 +118,26 @@
         	(Now ?container is broken by ?poundTool and ?obj is revealed in ?mt)))
         (doForget (ist-Information ?mt (inContainer ?obj ?container)))
 	    (doRecord (ist-Information ?mt (onTable ?obj)))   
+      )
+    )
+  )
+)
+
+(preconditionForMethod
+  (and
+    (ist-Information ?mt (isa ?container Container))
+    (ist-Information ?mt (isa ?poundTool PoundingDrivingImplement))
+    (ist-Information ?mt (inContainer ?obj ?container))
+	(unclearTop ?poundTool ?mt)
+ )            
+ (methodForAction (breakContainer ?container ?poundTool ?mt)
+    (actionSequence
+      (TheList
+        (doRecord (ist-Information MyEscapePlanMt 
+        	(Breaking ?container was unsuccessful due to something on top of ?poundTool in ?mt)))
+        (doAgentPlan (removeFromTop ?poundTool ?mt))
+	    (doClearWorkingMemory)
+	    (doAgentPlan (breakContainer ?container ?poundTool ?mt))
       )
     )
   )

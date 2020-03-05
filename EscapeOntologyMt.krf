@@ -43,7 +43,7 @@
 (isa removeFromTop ComplexActionPredicate)
 
 
-;;;added the namespace wrapper
+;;;horn clauses
 (<== (accessible ?obj ?mt)
 		(ist-Information ?mt (onTable ?obj))
 		(clearTop ?obj ?mt)
@@ -52,7 +52,6 @@
 (<== (notAccessible ?obj ?mt)
 		(uninferredSentence(accessible ?obj ?mt))
 )
-
 
 (<== (clearTop ?obj ?mt)
 	 	(uninferredSentence (unclearTop ?obj ?mt))
