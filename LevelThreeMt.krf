@@ -1,0 +1,17 @@
+
+(in-microtheory LevelThreeMt)
+(genlMt EscapeMt LevelThreeMt)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+(onTable K1)
+(isa K1 keyOfLock)
+
+(isa B1 box)
+(isa B2 box)
+(isa B3 box)
+
+(onTop B1 K1)
+(onTop B2 B1)
+(onTop B3 B2)

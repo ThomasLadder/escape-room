@@ -1,0 +1,9 @@
+
+(in-microtheory LevelOneMt)
+(genlMt EscapeMt LevelOneMt)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+(onTable K1)
+(isa K1 keyOfLock)
