@@ -1,6 +1,6 @@
 
-(in-microtheory LevelFourMt)
-(genlMt EscapeMt LevelFourMt)
+(in-microtheory LevelFiveMt)
+(genlMt EscapeMt LevelFiveMt)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -16,6 +16,7 @@
 (isa Box1 box)
 (isa Box2 box)
 (isa Box3 box)
+(isa Box4 box)
 (isa K1 keyOfLock)
 (isa Hammer1 PoundingDrivingImplement)
 (isa Jar1 Container)

@@ -9,7 +9,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;
 (preconditionForMethod
   (and
-	 (accessible ?obj ?mt)
+	 (clearTop ?obj ?mt)
 	 (isa ?obj keyOfLock)
   )    
   (methodForAction (fetch ?obj ?mt)
@@ -24,12 +24,12 @@
 )
 
 ;;;;;;;;;;;;;;;;;;;;;;;
-;;;FETCH - NOT ACCESSIBLE - UNCLEAR
+;;;FETCH - NOT ACCESSIBLE - UNCLEAR TOP
 ;;;;;;;;;;;;;;;;;;;;;;;
 (preconditionForMethod
   (and
-    (notAccessible ?obj ?mt)
     (unclearTop ?obj ?mt)
+    (ist-Information ?mt (onTop ?objToRemove ?obj))
   )            
   (methodForAction (fetch ?obj ?mt)
     (actionSequence
@@ -84,8 +84,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;
 (preconditionForMethod
   (and
-   (notAccessible ?obj ?mt)
-   (isa ?obj keyOfLock)
+   (unclearTop ?obj ?mt)
    (ist-Information ?mt (inContainer ?obj ?container))
   )            
   (methodForAction (fetch ?obj ?mt)
@@ -94,6 +93,7 @@
         (doRecord (ist-Information MyEscapePlanMt 
         	(Fetching was unsuccessful because ?obj is in ?container in ?mt)))
         (doAgentPlan (breakContainer ?container ?poundTool ?mt))
+        (doClearWorkingMemory)
         (doAgentPlan (fetch ?obj ?mt))     
       )
     )
@@ -108,8 +108,8 @@
     (ist-Information ?mt (isa ?container Container))
     (ist-Information ?mt (isa ?poundTool PoundingDrivingImplement))
     (ist-Information ?mt (inContainer ?obj ?container))
-	(accessible ?container ?mt)
-	(accessible ?poundTool ?mt)
+	(clearTop ?container ?mt)
+	(clearTop ?poundTool ?mt)
  )            
  (methodForAction (breakContainer ?container ?poundTool ?mt)
     (actionSequence
@@ -117,7 +117,6 @@
         (doRecord (ist-Information MyEscapePlanMt 
         	(Now ?container is broken by ?poundTool and ?obj is revealed in ?mt)))
         (doForget (ist-Information ?mt (inContainer ?obj ?container)))
-	    (doRecord (ist-Information ?mt (onTable ?obj)))   
       )
     )
   )
@@ -136,6 +135,26 @@
         (doRecord (ist-Information MyEscapePlanMt 
         	(Breaking ?container was unsuccessful due to something on top of ?poundTool in ?mt)))
         (doAgentPlan (removeFromTop ?poundTool ?mt))
+	    (doClearWorkingMemory)
+	    (doAgentPlan (breakContainer ?container ?poundTool ?mt))
+      )
+    )
+  )
+)
+
+(preconditionForMethod
+  (and
+    (ist-Information ?mt (isa ?container Container))
+    (ist-Information ?mt (isa ?poundTool PoundingDrivingImplement))
+    (ist-Information ?mt (inContainer ?obj ?container))
+	(unclearTop ?container ?mt)
+ )            
+ (methodForAction (breakContainer ?container ?poundTool ?mt)
+    (actionSequence
+      (TheList
+        (doRecord (ist-Information MyEscapePlanMt 
+        	(Breaking ?container was unsuccessful due to something on top of ?container in ?mt)))
+        (doAgentPlan (removeFromTop ?container ?mt))
 	    (doClearWorkingMemory)
 	    (doAgentPlan (breakContainer ?container ?poundTool ?mt))
       )
