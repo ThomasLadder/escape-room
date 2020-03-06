@@ -30,6 +30,12 @@
 (isa onTop Predicate)
 (arity onTop 2)
 
+(isa isAKey Predicate)
+(arity isAKey 1)
+
+(isa notAKey Predicate)
+(arity notAKey 1)
+
 (isa clearTop Predicate)
 (arity clearTop 2)
 
@@ -48,4 +54,12 @@
 
 (<== (unclearTop ?obj ?mt)
 		(ist-Information ?mt (inContainer ?obj ?obj2))
+)
+
+(<== (isAKey ?obj)
+		(isa ?obj keyOfLock)
+)
+
+(<== (notAKey ?obj)
+		(uninferredSentence (isAKey ?obj))
 )
