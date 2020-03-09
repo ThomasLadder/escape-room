@@ -38,28 +38,28 @@ Escape-Room consists of:
 # Levels
 ### Level 1
 There is a key on top of the box. The agent fetches the key and escapes the room. 
-<img src="/Images/Level2.png" width="480">
+<img src="/Images/Level1.png" width="480">
 
 ### Level 2
 The key is in a jar on a table. There is also a hammer on the table. The agent fetches the hammer, breaks the jar, fetches
 the key and escapes the room.
-![Level2](/Images/Level2.png)
+<img src="/Images/Level2.png" width="480">
 
 ### Level 3
 The key is on a table, but there a three boxes on top of it. The agent removes the top box, and then removes the box that was underneath it, then removes the last box on top of the key. Then the agent fetches the key and escapes the room.
-![Level3](/Images/Level3.PNG)
+<img src="/Images/Level3.png" width="480">
 
 ### Level 4
 There is a jar on the table. The key is inside the jar. There is a box on top of the jar. There is also a hammer on the table,
 and there are two boxes on the hammer. The agent removes the box from on top of the jar. Then, the agent removes the top box
 from the hammer, and then removes the other box from the hammer. The agent breaks the container with the hammer, fetches the
 key, and escapes the room.
-![Level4](/Images/Level4.png)
+<img src="/Images/Level4.png" width="480">
 
 ### Level 5
 There is a jar on the table which contains another jar. The inner jar contains the key. There is a box on top of the jar. There are two hammers on the table. One of the hammers has two boxes on it. The agent takes the box off the jar. Then the agent fetches the uncovered hammer and smashes the outer jar. The hammer breaks in the process. The agent takes each box off the covered hammer, fetches it, and uses it to break the inner jar. The agent fetches the key and escapes the room.
-![Level5](/Images/Level5.png)
+<img src="/Images/Level5.png" width="480">
 
 ### Level 6
 There are two jars on the table. One has a key in it, and one has a hammer in it. The jar containing a key has one box on it, and the jar containing a hammer has two boxes on it. There is also a hammer on the table. The agent takes the box off of the jar containing a key. It uses the uncovered hammer to break the jar. The agent fetches the key and escapes the room. This level demonstrates that the agent ignores the chance to smash open the second jar, and instead takes the most straightforward path to achieving its goal.
-![Level6](/Images/Level6.png)
+<img src="/Images/Level6.png" width="480">
