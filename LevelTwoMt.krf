@@ -4,10 +4,11 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(inContainer K1 Jar1)
-(onTable Hammer1)
-(onTable Jar1)
+(containerOf K1 Jar1)
+(on-Physical Hammer1 Table1)
+(on-Physical Jar1 Table1)
 
 (isa K1 keyOfLock)
 (isa Hammer1 PoundingDrivingImplement)
 (isa Jar1 Container)
+(isa Table1 Table-PieceOfFurniture)

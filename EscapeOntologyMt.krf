@@ -10,9 +10,6 @@
 (isa escape ComplexActionPredicate)
 (arity escape 2)
 
-(isa escapeFail ComplexActionPredicate)
-(arity escapeFail 1)
-
 (isa fetch ComplexActionPredicate)
 (arity fetch 2)
 
@@ -20,15 +17,7 @@
 (arity breakContainer 3)
 
 (isa removeFromTop ComplexActionPredicate)
-
-(isa onTable Predicate)
-(arity onTable 1)
-
-(isa inContainer Predicate)
-(arity inContainer 2)
-
-(isa onTop Predicate)
-(arity onTop 2)
+(arity removeFromTop 2)
 
 (isa isAKey Predicate)
 (arity isAKey 1)
@@ -49,11 +38,11 @@
 )
 
 (<== (unclearTop ?obj ?mt)
-		(ist-Information ?mt (onTop ?obj2 ?obj))
+		(ist-Information ?mt (on-Physical ?obj2 ?obj))
 )
 
 (<== (unclearTop ?obj ?mt)
-		(ist-Information ?mt (inContainer ?obj ?obj2))
+		(ist-Information ?mt (containerOf ?obj ?obj2))
 )
 
 (<== (isAKey ?obj)

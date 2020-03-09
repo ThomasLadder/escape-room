@@ -5,6 +5,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-(onTop K1 Box1)
+(on-Physical Box1 Table1)
+(on-Physical K1 Box1)
+
 (isa K1 keyOfLock)
-(isa Box1 box)
+(isa Box1 Box-Container)
+(isa Table1 Table-PieceOfFurniture)

@@ -47,7 +47,7 @@
 (preconditionForMethod
   (and
    (unclearTop ?obj ?mt)
-   (ist-Information ?mt (inContainer ?obj ?container))
+   (ist-Information ?mt (containerOf ?obj ?container))
   )            
   (methodForAction (fetch ?obj ?mt)
     (actionSequence
@@ -69,7 +69,7 @@
   (and
     (ist-Information ?mt (isa ?container Container))
     (ist-Information ?mt (isa ?poundTool PoundingDrivingImplement))
-    (ist-Information ?mt (inContainer ?obj ?container))
+    (ist-Information ?mt (containerOf ?obj ?container))
  )            
  (methodForAction (breakContainer ?container ?poundTool ?mt)
     (actionSequence
@@ -78,7 +78,7 @@
         (doAgentPlan (fetch ?poundTool ?mt))
         (doRecord (ist-Information MyEscapePlanMt 
           (Now ?container is broken by ?poundTool and ?obj is revealed in ?mt)))
-        (doForget (ist-Information ?mt (inContainer ?obj ?container)))
+        (doForget (ist-Information ?mt (containerOf ?obj ?container)))
       )
     )
   )
@@ -90,7 +90,7 @@
 (preconditionForMethod
   (and
     (unclearTop ?obj ?mt)
-    (ist-Information ?mt (onTop ?objToRemove ?obj))
+    (ist-Information ?mt (on-Physical ?objToRemove ?obj))
   )            
   (methodForAction (fetch ?obj ?mt)
     (actionSequence
@@ -110,14 +110,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;
 (preconditionForMethod
   (and
-  	(ist-Information ?mt (onTop ?objToRemove ?objUnderneath))
+  	(ist-Information ?mt (on-Physical ?objToRemove ?objUnderneath))
   	(clearTop ?objToRemove ?mt))
   
   (methodForAction (removeFromTop ?objUnderneath ?mt)
     (actionSequence
       (TheList
-        (doRecord (ist-Information ?mt (onTable ?objToRemove)))
-        (doForget (ist-Information ?mt (onTop ?objToRemove ?objUnderneath)))
+        (doRecord (ist-Information ?mt (on-Physical ?objToRemove Table1)))
+        (doForget (ist-Information ?mt (on-Physical ?objToRemove ?objUnderneath)))
         (doRecord (ist-Information MyEscapePlanMt 
         	(Now ?objToRemove is removed from the top of ?objUnderneath in ?mt)))
       )
@@ -127,7 +127,7 @@
 
 (preconditionForMethod
 	(and
-		(ist-Information ?mt (onTop ?objToRemove ?objUnderneath))
+		(ist-Information ?mt (on-Physical ?objToRemove ?objUnderneath))
 		(unclearTop ?objToRemove ?mt))
 
 	(methodForAction (removeFromTop ?objUnderneath ?mt)

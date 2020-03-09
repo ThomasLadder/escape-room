@@ -6,17 +6,18 @@
 
 
 
-(inContainer K1 Jar1)
-(onTable Jar1)
-(onTable Hammer1)
-(onTop Box1 Hammer1)
-(onTop Box2 Box1)
-(onTop Box3 Jar1)
+(containerOf K1 Jar1)
+(on-Physical Jar1 Table1)
+(on-Physical Hammer1 Table1)
+(on-Physical Box1 Hammer1)
+(on-Physical Box2 Box1)
+(on-Physical Box3 Jar1)
 
-(isa Box1 box)
-(isa Box2 box)
-(isa Box3 box)
+(isa Box1 Box-Container)
+(isa Box2 Box-Container)
+(isa Box3 Box-Container)
 (isa K1 keyOfLock)
 (isa Hammer1 PoundingDrivingImplement)
 (isa Jar1 Container)
+(isa Table1 Table-PieceOfFurniture)
 
