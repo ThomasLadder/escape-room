@@ -38,7 +38,7 @@ Escape-Room consists of:
 # Levels
 ### Level 1
 There is a key on top of the box. The agent fetches the key and escapes the room. 
-![Level1](/Images/Level1.png)
+<img src="/Images/Level2.png" width="48">
 
 ### Level 2
 The key is in a jar on a table. There is also a hammer on the table. The agent fetches the hammer, breaks the jar, fetches
