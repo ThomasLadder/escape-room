@@ -1,0 +1,28 @@
+
+(in-microtheory LevelSixMt)
+(genlMt EscapeMt LevelSixMt)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+(containerOf K1 Jar1)
+(on-Physical Jar1 Table1)
+(on-Physical Box3 Jar1)
+(containerOf Hammer1 Jar2)
+(on-Physical Jar2 Table1)
+(on-Physical Box1 Jar2)
+(on-Physical Box2 Box1)
+(on-Physical Hammer2 Table1)
+
+
+(isa Box1 Box-Container)
+(isa Box2 Box-Container)
+(isa Box3 Box-Container)
+(isa Jar1 Container)
+(isa Jar2 Container)
+(isa K1 keyOfLock)
+(isa Hammer1 PoundingDrivingImplement)
+(isa Hammer2 PoundingDrivingImplement)
+(isa Table1 Table-PieceOfFurniture)
+

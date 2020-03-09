@@ -31,6 +31,12 @@
 (isa unclearTop Predicate)
 (arity unclearTop 2)
 
+(isa toolCompromised Predicate)
+(arity toolCompromised 2)
+
+(isa toolNotCompromised Predicate)
+(arity toolNotCompromised 2)
+
 
 ;;;horn clauses
 (<== (clearTop ?obj ?mt)
@@ -51,4 +57,12 @@
 
 (<== (notAKey ?obj)
 		(uninferredSentence (isAKey ?obj))
+)
+
+(<== (toolCompromised ?obj ?mt)
+		(ist-Information ?mt (functionalityCompromised ?obj))
+)
+
+(<== (toolNotCompromised ?obj ?mt)
+		(uninferredSentence (toolCompromised ?obj))
 )
