@@ -4,7 +4,7 @@ Escape-Room is an exploration of hierarchical planning with Companions. We desig
 Escape-Room consists of:
 1. EscapeMt, which defines methods for solving the challenges.
 2. EscapeOntologyMt, which initializes the methods.
-3. Four "levels," which each contain a microtheory that contain facts that represent a challenge that the agent must solve. In each level, the agent must fetch the key to escape from the room.
+3. Six "levels," which each contain a microtheory that contain facts that represent a challenge that the agent must solve. In each level, the agent must fetch the key to escape from the room.
 
 ## Usage
 1. Download each of the krf files and start a companion.
