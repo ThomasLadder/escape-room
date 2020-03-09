@@ -16,13 +16,14 @@ Escape-Room consists of:
 7. Load the level you want to run next as a flatfile.
 8. Run (fetch K1 < mt-name >) where < mt-name > is the level you want to run. Repeat steps 5-8 for the rest of the levels.
 
-## Levels
+
+# Levels
 ### Level 1
 There is a key on top of the box. The agent fetches the key and escapes the room. 
 ### Level 2
 The key is in a jar on a table. There is also a hammer on the table. The agent fetches the hammer, breaks the jar, fetches
 the key and escapes the room.
-### Level 3
+### Level
 The key is on a table, but there a three boxes on top of it. The agent removes the top box, and then removes the box
 that was underneath it, then removes the last box on top of the key. Then the agent fetches the key and escapes the room.
 ### Level 4
