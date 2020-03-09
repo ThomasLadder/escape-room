@@ -20,7 +20,7 @@
 (isa Box3 Box-Container)
 (isa Jar1 Container)
 (isa Jar2 Container)
-(isa K1 keyOfLock)
+(isa K1 KeyOfLock)
 (isa Hammer1 PoundingDrivingImplement)
 (isa Hammer2 PoundingDrivingImplement)
 (isa Table1 Table-PieceOfFurniture)

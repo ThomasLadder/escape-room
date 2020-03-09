@@ -52,7 +52,7 @@
 )
 
 (<== (isAKey ?obj)
-		(isa ?obj keyOfLock)
+		(isa ?obj KeyOfLock)
 )
 
 (<== (notAKey ?obj)
