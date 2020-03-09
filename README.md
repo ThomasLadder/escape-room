@@ -37,6 +37,7 @@ There is a jar on the table. The key is inside the jar. There is a box on top of
 and there are two boxes on the hammer. The agent removes the box from on top of the jar. Then, the agent removes the top box
 from the hammer, and then removes the other box from the hammer. The agent breaks the container with the hammer, fetches the
 key, and escapes the room.
+
 <a><img src=/Images/Level4.png align="left" height="500" width="500" ></a>
 
 ### Level 5
