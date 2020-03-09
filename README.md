@@ -38,6 +38,7 @@ and there are two boxes on the hammer. The agent removes the box from on top of 
 from the hammer, and then removes the other box from the hammer. The agent breaks the container with the hammer, fetches the
 key, and escapes the room.
 ![Level4](/Images/Level4.png)
+<a><img src=/Images/Level4.png height="48" width="48" ></a>
 
 ### Level 5
 There is a jar on the table which contains another jar. The inner jar contains the key. There is a box on top of the jar. There are two hammers on the table. One of the hammers has two boxes on it. The agent takes the box off the jar. Then the agent fetches the uncovered hammer and smashes the outer jar. The hammer breaks in the process. The agent takes each box off the covered hammer, fetches it, and uses it to break the inner jar. The agent fetches the key and escapes the room.
