@@ -1,15 +1,17 @@
 # Escape-Room
-Escape-Room is an exploration of hierarchical planning with Companions. We designed "escape room" challenges and use a companion agent to implement reasoning to solve the challenge. In these challenges, our agent is trapped in a room. In order to solve the challenge, the agent needs to fetch the key to unlock the door and escape the room.
+Escape-Room is an exploration of hierarchical planning with Companions. We designed "escape room" challenges and use a companion agent to implement reasoning to solve the challenge. In these challenges, our agent is trapped in a room. In order to solve the challenge, the agent needs to fetch the key to unlock the door and escape the room. Various obstacles that the agent must overcome to escape the room include accessing keys underneath stacks of boxes, within jars, within multiple levels of jars, and likewise for tools that may similarly be inaccessible, but are necessary to escape!.
 
 ## Description of Capabilities
 This implementation was designed to model several aspects of intelligent reasoning:
-1. Reasoning about spatial relations (on-relations and containment relations) and how the affect the ability to access an object
-2. Recursive reasoning - Allows for flexibility in reasoning - can carry out an unlimited number of steps without needing to know the entire plan in advance. 
+1. Reasoning about spatial relations (on-relations and containment relations) and how they affect the ability to access an object
+2. Recursive reasoning - Allows for flexibility in reasoning, so that the agent can carry out an unlimited number of steps without needing to know the entire plan in advance (i.e., the agent can work on accessing a hammer obscured in multiple ways until it is successful). 
 3. Common Sense Reasoning
- a. Object Affordances - Only certain objects can break jars, etc.
- b. Accessibility - an object is not accessible if it is obscured in some way (e.g., something is on top of it, or it is contained by another option)
- c. Order of actions - An object can only be interacted with if it is accessible. For example, you can only move a box if it is clear on top. If you have several objects stacked on one another, they must be removed in a certain order (i.e., from top to bottom)
-4. Generality - we attempted to model the entities and relations at a higher level of generality, to allow for more flexibility in reasoning. For example, our system considers which tools to use to break a jar based on whether or not they are a PoundingDrivingInstrument, rather than based on specific instances like "Hammer."
+    * Object Affordances - only certain objects can break jars, etc.
+    * Accessibility - an object is not accessible if it is obscured in some way (e.g., something is on top of it, or it is contained by another object)
+    * Planning the correct order of actions - An object can only be interacted with if it is accessible. For example, you can only move a box if it is clear on top. If you have several objects stacked on one another, they must be removed in a certain order (i.e., from top to bottom)
+4. Generality - we attempted to model the entities, relations, and methods at a high level of generality, to allow for more flexibility in reasoning. For example:
+    * Our system considers which tools to use to break a jar based on whether or not they are a PoundingDrivingInstrument, rather than based on specific instances like "Hammer." 
+    * We tried to keep our methods for interacting with objects general as well. Through the use of only 8 methods and 5 horn clauses - our system is able to handle a wide variety of tasks, and can use the same methods to interact with different types of objects. Thus we attempted to avoid unintelligent (and psychologically-implausible) object-specific planning and action taking. 
 
 ## Using with CogSketch
 Our original intent was to have our reasoner be able to communicate with CogSketch, allowing the user to draw a novel level (within constraints), and have the reasoner be able to solve that new level. Unfortunately, we couldn't figure out how to get the two to interface. However, as discussed above, we did attempt to write our code at a level of generality that would make future interface with CogSketch easy. We invite anyone who is able to connect the two to give it a try. 
@@ -30,7 +32,7 @@ Escape-Room consists of:
 6. If you want to run the next level, first run (doClearWorkingMemory), (doForgetKBMt MyEscapePlanMt), and (doForgetKBMt < mt-name >) where < mt-name > is the name of the level you just ran (i.e LevelOneMt).
 7. Load the level you want to run next as a flatfile.
 8. Run (fetch K1 < mt-name >) where < mt-name > is the level you want to run. Repeat steps 5-8 for the rest of the levels.
-9. Important: If you wish to run a certain level more than once, in between each run you must forget the microtheory and reload the flatfile. 
+9. IMPORTANT: If you wish to run a certain level more than once, in between each run you must forget the microtheory and reload the flatfile. 
 
 
 # Levels
