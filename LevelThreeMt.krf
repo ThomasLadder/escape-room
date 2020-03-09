@@ -6,7 +6,7 @@
 
 
 (on-Physical K1 Table1)
-(isa K1 keyOfLock)
+(isa K1 KeyOfLock)
 
 (on-Physical Box1 K1)
 (on-Physical Box2 Box1)

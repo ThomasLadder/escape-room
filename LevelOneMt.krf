@@ -8,6 +8,6 @@
 (on-Physical Box1 Table1)
 (on-Physical K1 Box1)
 
-(isa K1 keyOfLock)
+(isa K1 KeyOfLock)
 (isa Box1 Box-Container)
 (isa Table1 Table-PieceOfFurniture)
