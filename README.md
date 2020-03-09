@@ -7,7 +7,14 @@ Escape-Room consists of:
 3. Four "levels," which each contain a microtheory that contain facts that represent a challenge that the agent must solve. In each level, the agent must fetch the key to escape from the room.
 
 ## Usage
-Download 
+1. Download each of the krf files and start a companion.
+2. Run (doClearWorkingMemory).
+3. Use "Load Flatfile" in session-reasoner to load EscapeMt, EscapeOntologyMt, and LevelOneMt.
+4. Run (fetch K1 LevelOneMt)
+5. Search MyEscapePlanMt in the knowledge base to see the agent's actions in this level.
+6. If you want to run the next level, first run (doClearWorkingMemory), (doForgetKBMt MyEscapePlanMt), and (doForgetKBMt <mt-name>) where <mt-name> is the name of the level you just ran (i.e LevelOneMt).
+7. Load the level you want to run to run next as a flatfile.
+8. Run (fetch K1 <mt-name>) where <mt-name> is the level you want to run. Repeat steps 5-8 for the rest of the levels.
 
 ## Levels
 ### Level 1
@@ -24,3 +31,6 @@ and there are two boxes on the hammer. The agent removes the box from on top of 
 from the hammer, and then removes the other box from the hammer. The agent breaks the container with the hammer, fetches the
 key, and escapes the room.
 ### Level 5
+There is a jar on the table which contains another jar. The inner jar contains the key. There is a box on top of the jar. There are two hammers on the table. One of the hammers has two boxes on it. The agent takes the box off the jar. Then the agent fetches the uncovered hammer and smashes the outer jar. The hammer breaks in the process. The agent takes each box off the covered hammer, fetches it, and uses it to break the inner jar. The agent fetches the key and escapes the room.
+### Level 6
+There are two jars on the table. One has a key in it, and one has a hammer in it. The jar containing a key has one box on it, and the jar containing a hammer has two boxes on it. There is also a hammer on the table. The agent takes the box off of the jar containing a key. It uses the uncovered hammer to break the jar. The agent fetches the key and escapes the room. This level demonstrates that the agent ignores the chance to smash open the second jar, and instead takes the most straightforward path to achieving its goal.
