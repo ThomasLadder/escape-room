@@ -12,7 +12,7 @@ Escape-Room consists of:
 3. Use "Load Flatfile" in session-reasoner to load EscapeMt, EscapeOntologyMt, and LevelOneMt.
 4. Run (fetch K1 LevelOneMt)
 5. Search MyEscapePlanMt in the knowledge base to see the agent's actions in this level.
-6. If you want to run the next level, first run (doClearWorkingMemory), (doForgetKBMt MyEscapePlanMt), and (doForgetKBMt <mt-name>) where <mt-name> is the name of the level you just ran (i.e LevelOneMt).
+6. If you want to run the next level, first run (doClearWorkingMemory), (doForgetKBMt MyEscapePlanMt), and (doForgetKBMt < mt-name >) where <mt-name> is the name of the level you just ran (i.e LevelOneMt).
 7. Load the level you want to run to run next as a flatfile.
 8. Run (fetch K1 <mt-name>) where <mt-name> is the level you want to run. Repeat steps 5-8 for the rest of the levels.
 
