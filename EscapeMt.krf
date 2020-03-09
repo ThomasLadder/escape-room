@@ -1,0 +1,156 @@
+(in-microtheory EscapeMt)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;
+;;;FETCH - ACCESSIBLE KEY
+;;;;;;;;;;;;;;;;;;;;;;;
+(preconditionForMethod
+  (and
+	 (clearTop ?obj ?mt)
+	 (isAKey ?obj)
+  )    
+  (methodForAction (fetch ?obj ?mt)
+    (actionSequence
+      (TheList
+        (doRecord (ist-Information MyEscapePlanMt 
+        	(Fetching ?obj was successful in ?mt !)))
+        (doAgentPlan (escape ?obj ?mt))
+      )
+    )
+  )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;
+;;;FETCH - ACCESSIBLE NOT KEY
+;;;;;;;;;;;;;;;;;;;;;;;
+(preconditionForMethod
+  (and
+   (clearTop ?obj ?mt)
+   (notAKey ?obj)
+  )    
+  (methodForAction (fetch ?obj ?mt)
+    (actionSequence
+      (TheList
+        (doRecord (ist-Information MyEscapePlanMt 
+          (Fetching ?obj was successful in ?mt !)))
+      )
+    )
+  )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;
+;;;FETCH - NOT ACCESSIBLE - IN JAR
+;;;;;;;;;;;;;;;;;;;;;;;
+(preconditionForMethod
+  (and
+   (unclearTop ?obj ?mt)
+   (ist-Information ?mt (containerOf ?obj ?container))
+  )            
+  (methodForAction (fetch ?obj ?mt)
+    (actionSequence
+      (TheList
+        (doRecord (ist-Information MyEscapePlanMt 
+          (Fetching ?obj was unsuccessful because it is in ?container in ?mt)))
+        (doAgentPlan (breakContainer ?container ?poundTool ?mt))
+        (doClearWorkingMemory)
+        (doAgentPlan (fetch ?obj ?mt))     
+      )
+    )
+  )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;
+;;;BREAK CONTAINER
+;;;;;;;;;;;;;;;;;;;;;;;
+(preconditionForMethod
+  (and
+    (ist-Information ?mt (isa ?container Container))
+    (ist-Information ?mt (isa ?poundTool PoundingDrivingImplement))
+    (ist-Information ?mt (containerOf ?obj ?container))
+    (toolNotCompromised ?poundTool ?mt)
+ )            
+ (methodForAction (breakContainer ?container ?poundTool ?mt)
+    (actionSequence
+      (TheList
+        (doAgentPlan (fetch ?container ?mt))
+        (doAgentPlan (fetch ?poundTool ?mt))
+        (doRecord (ist-Information ?mt (functionalityCompromised ?poundTool)))
+        (doRecord (ist-Information MyEscapePlanMt 
+          (Now ?container is broken by ?poundTool and ?obj is revealed but ?poundTool cannot be used again in ?mt)))
+        (doForget (ist-Information ?mt (containerOf ?obj ?container)))
+      )
+    )
+  )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;
+;;;FETCH - NOT ACCESSIBLE - UNCLEAR TOP
+;;;;;;;;;;;;;;;;;;;;;;;
+(preconditionForMethod
+  (and
+    (unclearTop ?obj ?mt)
+    (ist-Information ?mt (on-Physical ?objToRemove ?obj))
+  )            
+  (methodForAction (fetch ?obj ?mt)
+    (actionSequence
+      (TheList
+        (doRecord (ist-Information MyEscapePlanMt 
+        	(Fetching ?obj was unsuccessful due to something on top of it in ?mt)))
+        (doAgentPlan (removeFromTop ?obj ?mt))
+        (doClearWorkingMemory)
+        (doAgentPlan (fetch ?obj ?mt))
+      )
+    )
+  )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;
+;;;REMOVE FROM TOP 
+;;;;;;;;;;;;;;;;;;;;;;;
+(preconditionForMethod
+  (and
+  	(ist-Information ?mt (on-Physical ?objToRemove ?objUnderneath))
+  	(clearTop ?objToRemove ?mt))
+  
+  (methodForAction (removeFromTop ?objUnderneath ?mt)
+    (actionSequence
+      (TheList
+        (doRecord (ist-Information ?mt (on-Physical ?objToRemove Table1)))
+        (doForget (ist-Information ?mt (on-Physical ?objToRemove ?objUnderneath)))
+        (doRecord (ist-Information MyEscapePlanMt 
+        	(Now ?objToRemove is removed from the top of ?objUnderneath in ?mt)))
+      )
+    )
+  )
+)
+
+(preconditionForMethod
+	(and
+		(ist-Information ?mt (on-Physical ?objToRemove ?objUnderneath))
+		(unclearTop ?objToRemove ?mt))
+
+	(methodForAction (removeFromTop ?objUnderneath ?mt)
+		(actionSequence
+			(TheList
+				(doAgentPlan (removeFromTop ?objToRemove ?mt))
+			)
+		)
+	)
+)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;
+;;;ESCAPE = WIN!
+;;;;;;;;;;;;;;;;;;;;;;;
+(preconditionForMethod
+  (true)            
+  (methodForAction (escape ?obj ?mt)
+    (actionSequence
+      (TheList
+        (doRecord (ist-Information MyEscapePlanMt (Escape is successful in ?mt !)))
+      )
+    )
+  )
+)
