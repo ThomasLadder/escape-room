@@ -47,7 +47,7 @@ the key and escapes the room.
 
 ### Level 3
 The key is on a table, but there a three boxes on top of it. The agent removes the top box, and then removes the box that was underneath it, then removes the last box on top of the key. Then the agent fetches the key and escapes the room.
-![Level3](/Images/Level3.png)
+![Level3](/Images/Level3.PNG)
 
 ### Level 4
 There is a jar on the table. The key is inside the jar. There is a box on top of the jar. There is also a hammer on the table,
