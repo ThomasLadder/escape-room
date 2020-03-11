@@ -14,7 +14,7 @@ This implementation was designed to model several aspects of intelligent reasoni
     * We tried to keep our methods for interacting with objects general as well. Through the use of only 8 methods and 5 horn clauses - our system is able to handle a wide variety of tasks, and can use the same methods to interact with different types of objects. Thus we attempted to avoid unintelligent (and psychologically-implausible) object-specific planning and action taking. 
 5. Executing the plan with the optimal number of steps - When multiple paths are available, the reasoner will choose the path that results in the optimal number of steps. If two different paths are equivalent, it will choose arbitrarily (which can sometimes result in some behavior that would be strange for humans - i.e., going for an obscured hammer before an accessible).
 
-<font size="1">Footnote [1]: We tried to use transitive class inference (Hockey stick --> SportsPoundingDrivingImplement --> PoundingDrivingImplement) to allow for both local specific declaration and abtract reasoning in planning. Though the reasoning is successful, there is issue inside Companion that return names of other subclasses in recording the steps in MyEscapePlanMt (e.g., golf club instead of hockey stick). Therefore, we chose to use local abstract declaration. </font>
+Footnote [1]: We tried to use transitive class inference (Hockey stick --> SportsPoundingDrivingImplement --> PoundingDrivingImplement) to allow for both local specific declaration and abtract reasoning in planning. Though the reasoning is successful, there is issue inside Companion that return names of other subclasses in recording the steps in MyEscapePlanMt (e.g., golf club instead of hockey stick). Therefore, we chose to use local abstract declaration.
 
 ## Using with CogSketch
 Our original intent was to have our reasoner be able to communicate with CogSketch, allowing the user to draw a novel level (within constraints), and have the reasoner be able to solve that new level. Unfortunately, we couldn't figure out how to get the two to interface. But, as discussed above, we did attempt to write our code at a level of generality that would make future interface with CogSketch easy. We invite anyone who is able to connect the two to give it a try. 
@@ -67,7 +67,7 @@ the key and escapes the room.
 
 ### Level 3
 The key is on a table, but there a three boxes on top of it. The agent removes the top box, and then removes the box that was underneath it, then removes the last box on top of the key. Then the agent fetches the key and escapes the room.
-![Level3](Images/Level3.png "Level3")
+![Level3](Images/Level3.PNG "Level3")
 
 #### Reasoning Steps
 1. Attempt to fetch the key
