@@ -20,11 +20,17 @@ Footnote [1]: We tried to use transitive class inference (Hockey stick --> Sport
 Our original intent was to have our reasoner be able to communicate with CogSketch, allowing the user to draw a novel level (within constraints), and have the reasoner be able to solve that new level. Unfortunately, we couldn't figure out how to get the two to interface. But, as discussed above, we did attempt to write our code at a level of generality that would make future interface with CogSketch easy. We invite anyone who is able to connect the two to give it a try. 
 
 
-## Overview of Files
-Escape-Room consists of:
+## Overview of Directory
+### Source - Contains all the KRF files needed to run
 1. EscapeMt, which defines methods for solving the challenges.
 2. EscapeOntologyMt, which initializes the methods.
 3. Six "levels," which each contain a microtheory that contain facts that represent a challenge that the agent must solve. In each level, the agent must fetch the key to escape from the room.
+
+### Images - Screenshots of the 6 levels, drawn out in CogSketch.
+These are intended for you to refer to as you read this documentation, and also to understand what is going on in each level
+
+### CogSketchLevels
+We created every level in CogSketch, with the hopes of being able to able to use our reasoner directly with CogSketch in the future. There are 6 CogSketch files, one for each level
 
 ## Usage
 1. Download each of the krf files and start a companion.
