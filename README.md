@@ -1,5 +1,5 @@
 # Escape-Room
-Escape-Room is an exploration of hierarchical planning with Companions. We designed "escape room" challenges and use a companion agent to implement reasoning to solve the challenge. In these challenges, our agent is trapped in a room. In order to solve the challenge, the agent needs to fetch the key to unlock the door and escape the room. Various obstacles that the agent must overcome to escape the room include accessing keys underneath stacks of boxes, within jars, within multiple levels of jars, and likewise for tools that may similarly be inaccessible, but are necessary to escape!.
+Escape-Room is an exploration of hierarchical planning, commonsense reasoning, and spatial reasoning with Companions. We designed "escape room" challenges and designed a Companions agent to implement reasoning to solve the challenge. In these challenges, our agent is trapped in a room. In order to escape, the agent needs to fetch the key to unlock the door and escape the room. Various obstacles that the agent must overcome to escape the room include accessing keys underneath stacks of boxes, within jars, within multiple jars, and likewise for tools that may similarly be inaccessible, but are necessary to escape!.
 
 ## Description of Capabilities
 This implementation was designed to model several aspects of intelligent reasoning:
@@ -12,9 +12,10 @@ This implementation was designed to model several aspects of intelligent reasoni
 4. Generality - we attempted to model the entities, relations, and methods at a high level of generality, to allow for more flexibility in reasoning. For example:
     * Our system considers which tools to use to break a jar based on whether or not they are a PoundingDrivingInstrument, rather than based on specific instances like "Hammer." 
     * We tried to keep our methods for interacting with objects general as well. Through the use of only 8 methods and 5 horn clauses - our system is able to handle a wide variety of tasks, and can use the same methods to interact with different types of objects. Thus we attempted to avoid unintelligent (and psychologically-implausible) object-specific planning and action taking. 
+5. Executing the plan with the optimal number of steps - When multiple paths are available, the reasoner will choose the path that results in the optimal number of steps. If two different paths are equivalent, it will choose arbitrarily (which can sometimes result in some behavior that would be strange for humans - i.e., going for an obscured hammer before an accessible).
 
 ## Using with CogSketch
-Our original intent was to have our reasoner be able to communicate with CogSketch, allowing the user to draw a novel level (within constraints), and have the reasoner be able to solve that new level. Unfortunately, we couldn't figure out how to get the two to interface. However, as discussed above, we did attempt to write our code at a level of generality that would make future interface with CogSketch easy. We invite anyone who is able to connect the two to give it a try. 
+Our original intent was to have our reasoner be able to communicate with CogSketch, allowing the user to draw a novel level (within constraints), and have the reasoner be able to solve that new level. Unfortunately, we couldn't figure out how to get the two to interface. But, as discussed above, we did attempt to write our code at a level of generality that would make future interface with CogSketch easy. We invite anyone who is able to connect the two to give it a try. 
 
 
 ## Overview of Files
@@ -29,10 +30,10 @@ Escape-Room consists of:
 3. Use "Load Flatfile" in session-reasoner to load EscapeMt, EscapeOntologyMt, and LevelOneMt.
 4. Run (fetch K1 LevelOneMt)
 5. Search MyEscapePlanMt in the knowledge base to see the agent's actions in this level.
-6. If you want to run the next level, first run (doClearWorkingMemory), (doForgetKBMt MyEscapePlanMt), and (doForgetKBMt < mt-name >) where < mt-name > is the name of the level you just ran (i.e LevelOneMt).
+6. If you want to run the next level, first run (doClearWorkingMemory) and (doForgetKBMt MyEscapePlanMt)
 7. Load the level you want to run next as a flatfile.
 8. Run (fetch K1 < mt-name >) where < mt-name > is the level you want to run. Repeat steps 5-8 for the rest of the levels.
-9. IMPORTANT: If you wish to run a certain level more than once, in between each run you must forget the microtheory and reload the flatfile. 
+9. IMPORTANT: If you wish to run a certain level more than once, in between each run you must forget the level microtheory and reload the flatfile. 
 
 
 # Levels
