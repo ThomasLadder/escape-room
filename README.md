@@ -10,9 +10,11 @@ This implementation was designed to model several aspects of intelligent reasoni
     * Accessibility - an object is not accessible if it is obscured in some way (e.g., something is on top of it, or it is contained by another object)
     * Planning the correct order of actions - An object can only be interacted with if it is accessible. For example, you can only move a box if it is clear on top. If you have several objects stacked on one another, they must be removed in a certain order (i.e., from top to bottom)
 4. Generality - we attempted to model the entities, relations, and methods at a high level of generality, to allow for more flexibility in reasoning. For example:
-    * Our system considers which tools to use to break a jar based on whether or not they are a PoundingDrivingInstrument, rather than based on specific instances like "Hammer." 
+    * Our system considers which tools to use to break a jar based on whether or not they are a PoundingDrivingImplement [1], rather than based on specific instances like "Hammer." 
     * We tried to keep our methods for interacting with objects general as well. Through the use of only 8 methods and 5 horn clauses - our system is able to handle a wide variety of tasks, and can use the same methods to interact with different types of objects. Thus we attempted to avoid unintelligent (and psychologically-implausible) object-specific planning and action taking. 
 5. Executing the plan with the optimal number of steps - When multiple paths are available, the reasoner will choose the path that results in the optimal number of steps. If two different paths are equivalent, it will choose arbitrarily (which can sometimes result in some behavior that would be strange for humans - i.e., going for an obscured hammer before an accessible).
+
+<font size="2">Footnote [1]: We tried to use transitive class inference (Hockey stick --> SportsPoundingDrivingImplement --> PoundingDrivingImplement) to allow for both local specific declaration and abtract reasoning in planning. Though the reasoning is successful, there is issue inside Companion that return names of other subclasses in recording the steps in MyEscapePlanMt (e.g., golf club instead of hockey stick). Therefore, we chose to use local abstract declaration. </font>
 
 ## Using with CogSketch
 Our original intent was to have our reasoner be able to communicate with CogSketch, allowing the user to draw a novel level (within constraints), and have the reasoner be able to solve that new level. Unfortunately, we couldn't figure out how to get the two to interface. But, as discussed above, we did attempt to write our code at a level of generality that would make future interface with CogSketch easy. We invite anyone who is able to connect the two to give it a try. 
@@ -28,18 +30,23 @@ Escape-Room consists of:
 1. Download each of the krf files and start a companion.
 2. Run (doClearWorkingMemory).
 3. Use "Load Flatfile" in session-reasoner to load EscapeMt, EscapeOntologyMt, and LevelOneMt.
-4. Run (fetch K1 LevelOneMt)
-5. Search MyEscapePlanMt in the knowledge base to see the agent's actions in this level.
-6. If you want to run the next level, first run (doClearWorkingMemory) and (doForgetKBMt MyEscapePlanMt)
+4. Run (fetch K1 LevelOneMt).
+5. Search MyEscapePlanMt in the knowledge base to see the agent's actions in this level. You may also want to turn on Profiler before step 4 and see the steps in order in the profiler.
+6. If you want to run the next level, first run (doForgetKBMt MyEscapePlanMt)
 7. Load the level you want to run next as a flatfile.
 8. Run (fetch K1 < mt-name >) where < mt-name > is the level you want to run. Repeat steps 5-8 for the rest of the levels.
-9. IMPORTANT: If you wish to run a certain level more than once, in between each run you must forget the level microtheory and reload the flatfile. 
+9. IMPORTANT: If you wish to run a certain level more than once, in between each run you must forget the level's microtheory and reload the flatfile. 
 
 
 # Levels
 ### Level 1
 There is a key on top of the box. The agent fetches the key and escapes the room. 
 ![Level1](Images/Level1.png "Level1")
+#### Reasoning Steps
+1. Attempt to fetch the key
+  * The key is on the box, which means it’s accessible
+2. Fetch the key and escape!
+
 
 ### Level 2
 The key is in a jar on a table. There is also a hammer on the table. The agent fetches the hammer, breaks the jar, fetches
